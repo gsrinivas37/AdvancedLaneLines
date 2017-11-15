@@ -83,8 +83,8 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-1. I implemented getCurvature function in code cell []. I used the sample code provided in the lecture videos to compute the curvature.
-2. I implemented getCarPosition function in code cell []. I used the following forum link to implement the function.
+1. I implemented getCurvature function in code cell [18]. I used the sample code provided in the lecture videos to compute the curvature.
+2. I implemented getCarPosition function in code cell [19]. I used the following forum link to implement the function.
 
 https://discussions.udacity.com/t/what-the-vehicle-position-with-respect-to-center-means/375281/4
 
@@ -114,3 +114,32 @@ Here's a [link to my video result](./project_video.mp4)
 4. Then I used the approach described in lectures to detect left and right lines, find curvatures.
 5. I tried my code in challenge_video and I noticed that it isn't working well on that video because it had additional edge line in the middle of road which I wasn't taking care of.
 6. I can imagine there can be many scenarios which were not considered in my implementation like road elevations, vehicle obstructions, construciton zones, etc.
+
+Post Feedback:
+I updated my pipeline to use the below guidelines and it worked even better.
+
+def select_yellow(image):
+hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+lower = np.array([20,60,60])
+upper = np.array([38,174, 250])
+mask = cv2.inRange(hsv, lower, upper)
+
+return mask
+and
+
+def select_white(image):
+lower = np.array([202,202,202])
+upper = np.array([255,255,255])
+mask = cv2.inRange(image, lower, upper)
+
+return mask
+and
+
+def comb_thresh(image):
+  yellow = select_yellow(image)
+  white = select_white(image)
+
+  combined_binary = np.zeros_like(yellow)
+  combined_binary[(yellow >= 1) | (white >= 1)] = 1
+
+  return combined_binary
