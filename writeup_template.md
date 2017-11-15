@@ -119,27 +119,25 @@ Post Feedback:
 I updated my pipeline to use the below guidelines and it worked even better.
 
 def select_yellow(image):
-hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
-lower = np.array([20,60,60])
-upper = np.array([38,174, 250])
-mask = cv2.inRange(hsv, lower, upper)
-
-return mask
+  hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+  lower = np.array([20,60,60])
+  upper = np.array([38,174, 250])
+  mask = cv2.inRange(hsv, lower, upper)
+  return mask
+  
 and
 
 def select_white(image):
-lower = np.array([202,202,202])
-upper = np.array([255,255,255])
-mask = cv2.inRange(image, lower, upper)
+  lower = np.array([202,202,202])
+  upper = np.array([255,255,255])
+  mask = cv2.inRange(image, lower, upper)
+  return mask
 
-return mask
 and
 
 def comb_thresh(image):
   yellow = select_yellow(image)
   white = select_white(image)
-
   combined_binary = np.zeros_like(yellow)
   combined_binary[(yellow >= 1) | (white >= 1)] = 1
-
   return combined_binary
