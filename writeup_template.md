@@ -107,4 +107,9 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+1. I started with using different color spaces and thresholding techniques to get clear output with left and right lines.
+2. It was lot of trial and error by viusalizing output of different combinations. Each combination has its own pros and cons. I tried various combinations and read through forums to see what other people are trying.
+3. Finally I settled on the combination of using HSV color space S and V layers and LUV color space L layer which gave me best results. It worked pretty good in all scenarios for both left and right lanes.
+4. Then I used the approach described in lectures to detect left and right lines, find curvatures.
+5. I tried my code in challenge_video and I noticed that it isn't working well on that video because it had additional edge line in the middle of road which I wasn't taking care of.
+6. I can imagine there can be many scenarios which were not considered in my implementation like road elevations, vehicle obstructions, construciton zones, etc.
