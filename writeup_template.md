@@ -14,10 +14,10 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 [image1]: ./examples/undistort_output.png "Undistorted"
 [image2]: ./test_images/test3.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
+[image3]: ./examples/binary_combo_example.png "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
+[image6]: ./examples/example_output.png "Output"
 [video1]: ./project_video.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -82,7 +82,10 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in code cell [] in getCurvature function. I used the sample code provided in the lecture videos to compute the curvature.
+1. I implemented getCurvature function in code cell []. I used the sample code provided in the lecture videos to compute the curvature.
+2. I implemented getCarPosition function in code cell []. I used the following forum link to implement the function.
+
+https://discussions.udacity.com/t/what-the-vehicle-position-with-respect-to-center-means/375281/4
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
